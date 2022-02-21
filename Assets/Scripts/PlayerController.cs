@@ -25,13 +25,21 @@ public class PlayerController : MonoBehaviour
         {
             if (MousePositon.x < width / 2)
             {
-                Player.transform.position = new Vector3(-2f,-2.6f,0f);
+                Player.transform.position = new Vector3(-1f,-2.6f,0f);
             }
 
             if (MousePositon.x > width / 2)
             {
-                Player.transform.position = new Vector3(2f, -2.6f, 0f);
+                Player.transform.position = new Vector3(1f, -2.6f, 0f);
             }
+        }
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if(collision.CompareTag("Obstacle"))
+        {
+            GameManager.instance.InGame = false;
         }
     }
 }
