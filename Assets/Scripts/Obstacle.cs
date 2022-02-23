@@ -11,19 +11,27 @@ public class Obstacle : MonoBehaviour
 
     public GameObject obstacle;
 
+    public Vector3 movement;
+
+    Rigidbody2D rb;
+
     void Start()
     {   
         x = ObstaclesPosition[Random.Range(0, ObstaclesPosition.Length)];
         y = 5.75f;
         obstacle.transform.position = new Vector3(x, y);
 
+        rb = GetComponent<Rigidbody2D>();
+
+        movement = new Vector3(0f, -500f);
+
+        rb.AddForce(movement);
     }
 
     
     void FixedUpdate()
     {
-        obstacle.transform.position = new Vector3(x, y);
-            y -= 0.1f;
+
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -31,9 +39,14 @@ public class Obstacle : MonoBehaviour
 
         if (collision.CompareTag("Floor"))
         {
-            //y = 5.75f;
-            //x = ObstaclesPosition[Random.Range(0, ObstaclesPosition.Length)];
-            Debug.Log("Touched Floor");
+            y = 5.75f;
+            x = ObstaclesPosition[Random.Range(0, ObstaclesPosition.Length)];
+            obstacle.transform.position = new Vector3(x, y);
+        }
+
+        if (collision.CompareTag("Player"))
+        {
+            GameManager.instance.InGame = false;
         }
     }
 }
