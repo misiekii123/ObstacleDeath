@@ -4,26 +4,36 @@ using UnityEngine;
 
 public class Obstacle : MonoBehaviour
 {
-    public int[] ObstaclesPosition = { -1, 1 };
+    public float[] ObstaclesPosition = { -1f, 1f };
+
+    private float x;
+    private float y;
 
     public GameObject obstacle;
 
     void Start()
-    {
-        obstacle.transform.position = new Vector3(1f, 5.75f);
+    {   
+        x = ObstaclesPosition[Random.Range(0, ObstaclesPosition.Length)];
+        y = 5.75f;
+        obstacle.transform.position = new Vector3(x, y);
+
     }
 
     
-    void Update()
+    void FixedUpdate()
     {
-        
+        obstacle.transform.position = new Vector3(x, y);
+            y -= 0.1f;
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (!collision.CompareTag("Player") && !collision.CompareTag("Floor"))
-        {
 
+        if (collision.CompareTag("Floor"))
+        {
+            //y = 5.75f;
+            //x = ObstaclesPosition[Random.Range(0, ObstaclesPosition.Length)];
+            Debug.Log("Touched Floor");
         }
     }
 }
