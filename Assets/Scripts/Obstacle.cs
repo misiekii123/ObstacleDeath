@@ -39,6 +39,8 @@ public class Obstacle : MonoBehaviour
 
         if (collision.CompareTag("Floor"))
         {
+            GameManager.instance.score++;
+            GameManager.instance.UpdateOnScreenScore();
             y = 5.75f;
             x = ObstaclesPosition[Random.Range(0, ObstaclesPosition.Length)];
             obstacle.transform.position = new Vector3(x, y);

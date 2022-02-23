@@ -12,9 +12,13 @@ public class GameManager : MonoBehaviour
 
     public static GameManager instance;
 
+    public int score;
+
     private void Awake()
     {
         InGame = true;
+        score = 0;
+
     }
 
     void Start()
@@ -23,6 +27,7 @@ public class GameManager : MonoBehaviour
         {
             instance = this;
         }
+
     }
 
     private void FixedUpdate()
@@ -30,6 +35,7 @@ public class GameManager : MonoBehaviour
         if (InGame == false)
         {
             SceneManager.LoadScene("GameOver");
+            UpdateOnScreenScore();
         }
     }
 
@@ -37,5 +43,10 @@ public class GameManager : MonoBehaviour
     {
         SceneManager.LoadScene("Menu");
         InGame = true;
+    }
+
+    public void UpdateOnScreenScore()
+    {
+        ScoreText.text = "Score: " + score.ToString();
     }
 }
