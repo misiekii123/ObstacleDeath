@@ -12,6 +12,11 @@ public class GameManager : MonoBehaviour
 
     public static GameManager instance;
 
+    private void Awake()
+    {
+        InGame = true;
+    }
+
     void Start()
     {
         if (instance == null)
