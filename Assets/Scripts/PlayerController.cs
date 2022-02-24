@@ -21,25 +21,30 @@ public class PlayerController : MonoBehaviour
     {
         MousePositon = Input.mousePosition;
 
-        if (Input.GetMouseButtonDown(0))
+        if (!MenuManager.instance.buttons)
         {
-            if (MousePositon.x < width / 2)
+            if (Input.GetMouseButtonDown(0))
             {
-                Player.transform.position = new Vector3(-1f,-2.6f,0f);
-            }
+                if (MousePositon.x < width / 2)
+                {
+                    Player.transform.position = new Vector3(-1f,-2.6f,0f);
+                }
 
-            if (MousePositon.x > width / 2)
-            {
-                Player.transform.position = new Vector3(1f, -2.6f, 0f);
+                if (MousePositon.x > width / 2)
+                {
+                    Player.transform.position = new Vector3(1f, -2.6f, 0f);
+                }
             }
         }
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    public void left()
     {
-        if(collision.CompareTag("Obstacle"))
-        {
-            GameManager.instance.InGame = false;
-        }
+        Player.transform.position = new Vector3(-1f, -2.6f, 0f);
+    }
+
+    public void right()
+    {
+        Player.transform.position = new Vector3(1f, -2.6f, 0f);
     }
 }

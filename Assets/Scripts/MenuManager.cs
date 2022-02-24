@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class MenuManager : MonoBehaviour
 {
@@ -9,7 +10,12 @@ public class MenuManager : MonoBehaviour
     public GameObject SettingsMenuPanel;
     public GameObject CreditsPanel;
 
+    public Text TextControlsButton;
+
     public static MenuManager instance;
+
+    public bool buttons;
+
 
     void Awake()
     {
@@ -20,6 +26,25 @@ public class MenuManager : MonoBehaviour
         if (instance == null)
         {
             instance = this;
+        }
+
+        if (PlayerPrefs.HasKey("buttons"))
+        {
+            if (PlayerPrefs.GetInt("buttons") == 1)
+            {
+                buttons = true;
+                TextControlsButton.text = "Controls:\nbuttons";
+            }
+            else if(PlayerPrefs.GetInt("buttons") == 0)
+            {
+                buttons = false;
+                TextControlsButton.text = "Controls:\ntouch";
+            }
+        }
+        else
+        {
+            buttons = false;
+            TextControlsButton.text = "Controls:\ntouch";
         }
 
     }
@@ -55,5 +80,21 @@ public class MenuManager : MonoBehaviour
         MainMenuPanel.SetActive(false);
         SettingsMenuPanel.SetActive(true);
         CreditsPanel.SetActive(false);
+    }
+
+    public void ChangeControls()
+    {
+        buttons = !buttons;
+
+        if(buttons == true)
+        {
+            TextControlsButton.text = "Controls:\nbuttons";
+            PlayerPrefs.SetInt("buttons", 1);
+        }
+        else if(buttons == false)
+        {
+            TextControlsButton.text = "Controls:\ntouch";
+            PlayerPrefs.SetInt("buttons", 0);
+        }
     }
 }
