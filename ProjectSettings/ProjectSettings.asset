@@ -42,6 +42,8 @@ PlayerSettings:
   m_SplashScreenLogos:
   - logo: {fileID: 10404, guid: 0000000000000000e000000000000000, type: 0}
     duration: 2
+  - logo: {fileID: 21300000, guid: 80a7d3e11526c304594660261c6ab713, type: 3}
+    duration: 2.5
   m_VirtualRealitySplashScreen: {fileID: 0}
   m_HolographicTrackingLossScreen: {fileID: 0}
   defaultScreenWidth: 1920
@@ -332,17 +334,23 @@ PlayerSettings:
       m_Height: 36
       m_Kind: 1
       m_SubKind: 
-    - m_Textures: []
+    - m_Textures:
+      - {fileID: 2800000, guid: d31a47df3df509447974cd71c5b0d960, type: 3}
+      - {fileID: 2800000, guid: d31a47df3df509447974cd71c5b0d960, type: 3}
       m_Width: 432
       m_Height: 432
       m_Kind: 2
       m_SubKind: 
-    - m_Textures: []
+    - m_Textures:
+      - {fileID: 2800000, guid: e9dd24770c227474d95a7d639c22e288, type: 3}
+      - {fileID: 2800000, guid: e9dd24770c227474d95a7d639c22e288, type: 3}
       m_Width: 324
       m_Height: 324
       m_Kind: 2
       m_SubKind: 
-    - m_Textures: []
+    - m_Textures:
+      - {fileID: 2800000, guid: 87ab21d6676b73a4f86556c35ac953d4, type: 3}
+      - {fileID: 2800000, guid: 87ab21d6676b73a4f86556c35ac953d4, type: 3}
       m_Width: 216
       m_Height: 216
       m_Kind: 2
