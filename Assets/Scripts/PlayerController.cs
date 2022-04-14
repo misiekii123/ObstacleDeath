@@ -11,6 +11,8 @@ public class PlayerController : MonoBehaviour
 
     private Vector3 MousePositon;
 
+    private float PlayerPosition;
+
     void Start()
     {
         width = Screen.width;
@@ -27,12 +29,18 @@ public class PlayerController : MonoBehaviour
             {
                 if (MousePositon.x < width / 2)
                 {
-                    Player.transform.position = new Vector3(-1f,-2.6f,0f);
+                    if (MenuManager.instance.level == 1 || MenuManager.instance.level == 2 || MenuManager.instance.level == 3)
+                    {
+                        Player.transform.position = new Vector3(-1f,-2.6f,0f);
+                    }
                 }
 
                 if (MousePositon.x > width / 2)
                 {
-                    Player.transform.position = new Vector3(1f, -2.6f, 0f);
+                    if (MenuManager.instance.level == 1 || MenuManager.instance.level == 2 || MenuManager.instance.level == 3)
+                    {
+                        Player.transform.position = new Vector3(1f, -2.6f, 0f);
+                    }
                 }
             }
         }
@@ -40,11 +48,17 @@ public class PlayerController : MonoBehaviour
 
     public void left()
     {
-        Player.transform.position = new Vector3(-1f, -2.6f, 0f);
+        if(MenuManager.instance.level == 1 || MenuManager.instance.level == 2 || MenuManager.instance.level == 3)
+        {
+            Player.transform.position = new Vector3(-1f, -2.6f, 0f);
+        }
     }
 
     public void right()
     {
-        Player.transform.position = new Vector3(1f, -2.6f, 0f);
+        if (MenuManager.instance.level == 1 || MenuManager.instance.level == 2 || MenuManager.instance.level == 3)
+        {
+            Player.transform.position = new Vector3(1f, -2.6f, 0f);
+        }
     }
 }

@@ -6,23 +6,26 @@ using UnityEngine.UI;
 
 public class MenuManager : MonoBehaviour
 {
+    [Header("Menu panels")]
     public GameObject MainMenuPanel;
     public GameObject SettingsMenuPanel;
     public GameObject CreditsPanel;
+    public GameObject LevelsPanel;
 
+    [Header("Controls buttons text")]
     public Text TextControlsButton;
 
-    public static MenuManager instance;
+    [Header("Levels")]
+    public int level;
 
+    [Header("Other")]
     public bool buttons;
+
+    public static MenuManager instance;
 
 
     void Awake()
     {
-        MainMenuPanel.SetActive(true);
-        SettingsMenuPanel.SetActive(false);
-        CreditsPanel.SetActive(false);
-
         if (instance == null)
         {
             instance = this;
@@ -35,7 +38,7 @@ public class MenuManager : MonoBehaviour
                 buttons = true;
                 TextControlsButton.text = "Controls:\nbuttons";
             }
-            else if(PlayerPrefs.GetInt("buttons") == 0)
+            else if (PlayerPrefs.GetInt("buttons") == 0)
             {
                 buttons = false;
                 TextControlsButton.text = "Controls:\ntouch";
@@ -46,12 +49,22 @@ public class MenuManager : MonoBehaviour
             buttons = false;
             TextControlsButton.text = "Controls:\ntouch";
         }
+    }
 
+    private void Start()
+    {
+        MainMenuPanel.SetActive(true);
+        SettingsMenuPanel.SetActive(false);
+        CreditsPanel.SetActive(false);
+        LevelsPanel.SetActive(false);
     }
 
     public void StartGame()
     {
-        SceneManager.LoadScene("Game");
+        MainMenuPanel.SetActive(false);
+        SettingsMenuPanel.SetActive(false);
+        CreditsPanel.SetActive(false);
+        LevelsPanel.SetActive(true);
     }
 
     public void OpenSettings()
@@ -59,6 +72,7 @@ public class MenuManager : MonoBehaviour
         MainMenuPanel.SetActive(false);
         SettingsMenuPanel.SetActive(true);
         CreditsPanel.SetActive(false);
+        LevelsPanel.SetActive(false);
     }
 
     public void CloseSettings()
@@ -66,6 +80,7 @@ public class MenuManager : MonoBehaviour
         MainMenuPanel.SetActive(true);
         SettingsMenuPanel.SetActive(false);
         CreditsPanel.SetActive(false);
+        LevelsPanel.SetActive(false);
     }
 
     public void OpenCredits()
@@ -73,6 +88,7 @@ public class MenuManager : MonoBehaviour
         MainMenuPanel.SetActive(false);
         SettingsMenuPanel.SetActive(false);
         CreditsPanel.SetActive(true);
+        LevelsPanel.SetActive(false);
     }
 
     public void CloseCredits()
@@ -80,6 +96,7 @@ public class MenuManager : MonoBehaviour
         MainMenuPanel.SetActive(false);
         SettingsMenuPanel.SetActive(true);
         CreditsPanel.SetActive(false);
+        LevelsPanel.SetActive(false);  
     }
 
     public void ChangeControls()
@@ -96,5 +113,23 @@ public class MenuManager : MonoBehaviour
             TextControlsButton.text = "Controls:\ntouch";
             PlayerPrefs.SetInt("buttons", 0);
         }
+    }
+
+    public void level1()
+    {
+        level = 1;
+        SceneManager.LoadScene("Game");
+    }
+
+    public void level2()
+    {
+        level = 2;
+        SceneManager.LoadScene("Game");
+    }
+
+    public void level3()
+    {
+        level = 3;
+        SceneManager.LoadScene("Game");
     }
 }

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Obstacle : MonoBehaviour
 {
-    public float[] ObstaclesPosition = { -1f, 1f };
+    public float[] ObstaclesPosition = {-1f,1f};
 
     private float x;
     private float y;
@@ -23,12 +23,24 @@ public class Obstacle : MonoBehaviour
 
         rb = GetComponent<Rigidbody2D>();
 
-        movement = new Vector3(0f, -500f);
+      
+        if(MenuManager.instance.level == 3)
+        {
+            movement = new Vector3(0f, -800f);
+        }
+        else if(MenuManager.instance.level == 2)
+        {
+            movement = new Vector3(0f, -500f);
+        }
+        else if (MenuManager.instance.level == 1)
+        {
+            movement = new Vector3(0f, -500f);
+        }
 
         rb.AddForce(movement);
     }
 
-    
+
     void FixedUpdate()
     {
 
