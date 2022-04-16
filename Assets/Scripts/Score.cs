@@ -54,7 +54,7 @@ public class Score : MonoBehaviour
             }
         }
 
-        if (MenuManager.instance.level == 2)
+        if (MenuManager.instance.level == 3)
         {
             if (PlayerPrefs.HasKey("HighScore3"))
             {

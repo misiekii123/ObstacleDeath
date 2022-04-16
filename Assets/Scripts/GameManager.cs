@@ -16,6 +16,8 @@ public class GameManager : MonoBehaviour
 
     public int score;
 
+    public Text PauseButtonText;
+
     private void Awake()
     {
         InGame = true;
@@ -58,5 +60,17 @@ public class GameManager : MonoBehaviour
     public void UpdateOnScreenScore()
     {
         ScoreText.text = "Score: " + score.ToString();
+    }
+
+    public void PauseGame()
+    {
+        Time.timeScale = 0;
+        PauseButtonText.text = "Resume";
+    }
+
+    public void ResumeGame()
+    {
+        Time.timeScale = 1;
+        PauseButtonText.text = "Pause";
     }
 }
